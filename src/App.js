@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Scoreboard from './Scoreboard';
 import './App.css';
+var uuid = require('node-uuid');
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      boards: [
+        { id: 0, name: 'name' },
+      ]
+    }
+  }
+
+  handleAddBoard(props){
+    this.setState({boards: this.state.boards.concat({id: uuid.v4(), name: 'name'})})
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
+        <div className="AppHeader">
+          <h2>Simple Scoreboard</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <button className='addBoardBtn' onClick={this.handleAddBoard.bind(this)}>Add a Board</button>
+          <ul>
+            {
+              this.state.boards.map( board =>(
+                <Scoreboard key={board.id} name={board.name}/>
+              ))
+            }
+          </ul>
       </div>
     );
   }
