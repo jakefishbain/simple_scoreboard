@@ -3,8 +3,11 @@ import ScoreForm from './ScoreForm'
 
 class Scoreboard extends Component {
   addScore(newScore){
-    console.log(newScore)
     this.props.onAddScore(this.props.id, newScore)
+  }
+
+  displayScore(newScore){
+
   }
 
   render(){
@@ -18,6 +21,7 @@ class Scoreboard extends Component {
         <h2>{this.props.score}</h2>
         <ScoreForm
           onAddScore={this.addScore.bind(this)}
+          onDisplayScore={this.displayScore.bind(this)}
         />
       </div>
     )
