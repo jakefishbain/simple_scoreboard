@@ -20,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <div className="AppHeader">
           <h2>Simple Scoreboard</h2>
         </div>
