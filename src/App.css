@@ -2,18 +2,21 @@
   text-align: center;
 }
 
-.App-header {
+.AppHeader {
   background-color: #222;
-  height: 150px;
+  height: 50px;
   padding: 20px;
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+.container {
+  width: 10%;
+  padding: 10%;
+  margin: 1%;
+  border: 2px solid black;
+  display: inline-block;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.addBoardBtn {
+  margin-top: 15px;
 }
