@@ -6,7 +6,7 @@ var uuid = require('node-uuid');
 const addScore = (id, score, boards) => {
   function attachScore(board){
     if(board.id === id){
-      board.score = score
+      board.score = +board.score + +score
     }
     return board
   }
@@ -15,7 +15,6 @@ const addScore = (id, score, boards) => {
 
 const removeBoard = (id, boards) => {
   function removeIt(board) {
-    // console.log(board.id, id)
     return board.id !== id
   }
   return boards.filter(removeIt)
@@ -40,7 +39,6 @@ class App extends Component {
   }
 
   handleDeleteBoard(id){
-    console.log(id)
     this.setState({boards: removeBoard(id, this.state.boards)})
   }
 

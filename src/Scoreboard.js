@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import ScoreForm from './ScoreForm'
 
 class Scoreboard extends Component {
-  addScore(e){
-    // console.log(e.target.value)
-    this.props.onAddScore(this.props.id, e.target.value)
+  addScore(newScore){
+    this.props.onAddScore(this.props.id, newScore)
+  }
+
+  displayScore(newScore){
+
   }
 
   render(){
@@ -15,9 +19,9 @@ class Scoreboard extends Component {
       </button>
         <input className='player'/>
         <h2>{this.props.score}</h2>
-        <input
-          className='addScore'
-          onChange={this.addScore.bind(this)}
+        <ScoreForm
+          onAddScore={this.addScore.bind(this)}
+          onDisplayScore={this.displayScore.bind(this)}
         />
       </div>
     )
