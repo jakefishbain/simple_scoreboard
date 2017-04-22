@@ -13,6 +13,14 @@ const addScore = (id, score, boards) => {
   return boards.map(attachScore)
 }
 
+const removeBoard = (id, boards) => {
+  function removeIt(board) {
+    // console.log(board.id, id)
+    return board.id !== id
+  }
+  return boards.filter(removeIt)
+}
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -31,6 +39,11 @@ class App extends Component {
     this.setState({boards: addScore(id, score, this.state.boards)})
   }
 
+  handleDeleteBoard(id){
+    console.log(id)
+    this.setState({boards: removeBoard(id, this.state.boards)})
+  }
+
   render() {
     return (
       <div className="App">
@@ -45,7 +58,9 @@ class App extends Component {
                 <Scoreboard
                   key={board.id}
                   score={board.score}
+                  id={board.id}
                   onAddScore={this.handleAddScore.bind(this)}
+                  onDelete={this.handleDeleteBoard.bind(this)}
                 />
               ))
             }

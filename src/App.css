@@ -10,6 +10,7 @@
 }
 
 .container {
+  position: relative;
   width: 10%;
   padding: 10%;
   margin: 1%;
@@ -19,4 +20,11 @@
 
 .addBoardBtn {
   margin-top: 15px;
+}
+
+.deleteBtn {
+  position: absolute;
+  margin: 5px;
+  top: 0px;
+  right: 0px;
 }

@@ -10,6 +10,10 @@ class Scoreboard extends Component {
   render(){
     return(
       <div className='container'>
+      <button
+        onClick={() => this.props.onDelete(this.props.id)}
+        className='deleteBtn'>X
+      </button>
         <input className='player'/>
         <h2>{this.props.score}</h2>
         <input
