@@ -14,7 +14,7 @@ class ScoreForm extends Component{
     return(
       <div>
         <form onSubmit={this.handleSubmit.bind(this)} id={this.props.id + 'form'}>
-          <input placeholder='Add to Score' type='text' id={this.props.id + 'newScore'}/>
+          <input placeholder='Add to Score' type='number' id={this.props.id + 'newScore'}/>
           <input type='submit' className='scoreSubmit'/>
         </form>
       </div>
