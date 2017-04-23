@@ -36,3 +36,7 @@ input {
 .scoreSubmit {
   visibility: hidden;
 }
+
+.credits {
+  font-size: 6px;
+}
