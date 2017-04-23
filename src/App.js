@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Interactive from './Interactable'
 import Scoreboard from './Scoreboard';
 import './App.css';
 var uuid = require('node-uuid');
@@ -71,24 +70,6 @@ const undoScore = (id, scoreIndex, boards) => {
   return boards.map(undo)
 }
 
-const draggableOptions = {
-	 onmove: event => {
-		const target = event.target
-	  // keep the dragged position in the data-x/data-y attributes
-	  const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-	  const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-
-	  // translate the element
-	  target.style.webkitTransform =
-	  target.style.transform =
-	    'translate(' + x + 'px, ' + y + 'px)'
-
-	  // update the posiion attributes
-	  target.setAttribute('data-x', x);
-	  target.setAttribute('data-y', y);
-	}
-}
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -142,7 +123,6 @@ class App extends Component {
             <div>
             {
               this.state.boards.map( board =>(
-              <Interactive draggable draggableOptions={draggableOptions}>
                 <Scoreboard
                   key={board.id}
                   score={board.score}
@@ -154,7 +134,6 @@ class App extends Component {
                   onReset={this.handleResetBoard.bind(this)}
                   onUndo={this.handleUndo.bind(this)}
                 />
-              </Interactive>
               ))
             }
             </div>

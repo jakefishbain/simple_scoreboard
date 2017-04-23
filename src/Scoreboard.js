@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ScoreForm from './ScoreForm'
-// import interact from 'interactjs'
 var uuid = require('node-uuid');
 var nf = new Intl.NumberFormat();
 
