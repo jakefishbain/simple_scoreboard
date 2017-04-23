@@ -42,6 +42,10 @@ class Scoreboard extends Component {
           ))}
         </ul>
         <button
+          className={'undo' + this.props.previousScores.length}
+          onClick={() => this.props.onUndo(this.props.id)}>Undo
+        </button>
+        <button
           className='resetBtn'
           onClick={() => this.props.onReset(this.props.id)}>Reset
         </button>
