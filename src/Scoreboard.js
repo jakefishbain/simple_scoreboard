@@ -25,7 +25,7 @@ class Scoreboard extends Component {
           onClick={() => this.props.onDelete(this.props.id)}
           className='deleteBtn'>X
         </button>
-        <input className='player' id={this.props.id + 'player'}/>
+        <input placeholder='Name' className='player' id={this.props.id + 'player'}/>
         <h2>{nf.format(this.props.score)}</h2>
         <ScoreForm
           key={this.props.id}
