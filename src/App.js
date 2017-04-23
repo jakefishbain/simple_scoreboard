@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Interactive from './Interactable'
 import Scoreboard from './Scoreboard';
 import './App.css';
 var uuid = require('node-uuid');
@@ -45,6 +46,19 @@ const resetBoard = (id, boards) => {
   return boards.map(resetScore)
 }
 
+const resetAll = (boards) => {
+  function resetAllScores(board){
+  const player = document.getElementById(`${board.id}player`)
+  const score = document.getElementById(`${board.id}newScore`)
+    player.value = ''
+    score.vaule = ''
+    board.score = 0
+    board.previousScores = []
+    return board
+  }
+  return boards.map(resetAllScores)
+}
+
 const undoScore = (id, scoreIndex, boards) => {
   function undo(board){
     console.log(board.previousScores[scoreIndex]);
@@ -55,6 +69,24 @@ const undoScore = (id, scoreIndex, boards) => {
     return board
   }
   return boards.map(undo)
+}
+
+const draggableOptions = {
+	 onmove: event => {
+		const target = event.target
+	  // keep the dragged position in the data-x/data-y attributes
+	  const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+	  const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+	  // translate the element
+	  target.style.webkitTransform =
+	  target.style.transform =
+	    'translate(' + x + 'px, ' + y + 'px)'
+
+	  // update the posiion attributes
+	  target.setAttribute('data-x', x);
+	  target.setAttribute('data-y', y);
+	}
 }
 
 class App extends Component {
@@ -79,8 +111,16 @@ class App extends Component {
     this.setState({boards: removeBoard(id, this.state.boards)})
   }
 
+  handleDeleteAll(){
+    this.setState({boards: []})
+  }
+
   handleResetBoard(id){
     this.setState({boards: resetBoard(id, this.state.boards)})
+  }
+
+  handleResetAll(){
+      this.setState({boards: resetAll(this.state.boards)})
   }
 
   handleUndo(boardId, scoreIndex){
@@ -96,9 +136,12 @@ class App extends Component {
           <h2>Simple Scoreboard</h2>
         </div>
           <button className='addBoardBtn' onClick={this.handleAddBoard.bind(this)}>Add a Board</button>
-          <ul>
+          <button className='deleteAllBtn' onClick={this.handleDeleteAll.bind(this)}>Delete All</button>
+          <button className='resetAllBtn' onClick={this.handleResetAll.bind(this)}>Reset All</button>
+            <div>
             {
               this.state.boards.map( board =>(
+              <Interactive draggable draggableOptions={draggableOptions}>
                 <Scoreboard
                   key={board.id}
                   score={board.score}
@@ -110,9 +153,10 @@ class App extends Component {
                   onReset={this.handleResetBoard.bind(this)}
                   onUndo={this.handleUndo.bind(this)}
                 />
+              </Interactive>
               ))
             }
-          </ul>
+            </div>
       <div className='credits'>Icons made by <a href="http://www.flaticon.com/authors/vignesh-oviyan" title="Vignesh Oviyan">Vignesh Oviyan</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
       </div>
     );

@@ -23,6 +23,11 @@
   margin-top: 15px;
 }
 
+.addBoardBtn, .deleteAllBtn, .resetAllBtn {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .deleteBtn {
   position: absolute;
   margin: 5px;
@@ -58,6 +63,9 @@ input {
 
 .credits {
   font-size: 6px;
+  position: absolute;
+  bottom: 0px;
+  left: 42%;
 }
 
 .resetBtn {
