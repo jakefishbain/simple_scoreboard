@@ -3,18 +3,19 @@ import React, { Component } from 'react'
 class ScoreForm extends Component{
   handleSubmit(e){
     e.preventDefault()
-    const form = document.getElementById('form')
-    const newScore = document.getElementById('newScore').value
+    const form = document.getElementById(`${this.props.id}form`)
+    const newScore = document.getElementById(`${this.props.id}newScore`).value
+    console.log(form)
     this.props.onAddScore(newScore)
-    this.props.onDisplayScore(newScore)
+    // this.props.onDisplayScore(newScore)
     form.reset()
   }
 
   render(){
     return(
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)} id='form'>
-          <input type='text' id='newScore'/>
+        <form onSubmit={this.handleSubmit.bind(this)} id={this.props.id + 'form'}>
+          <input type='text' id={this.props.id + 'newScore'}/>
           <input type='submit' className='scoreSubmit'/>
         </form>
       </div>

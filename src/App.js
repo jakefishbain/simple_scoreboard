@@ -57,7 +57,7 @@ class App extends Component {
                   key={board.id}
                   score={board.score}
                   id={board.id}
-                  onAddScore={this.handleAddScore.bind(this)}
+                  onGetAddScore={this.handleAddScore.bind(this)}
                   onDelete={this.handleDeleteBoard.bind(this)}
                 />
               ))
