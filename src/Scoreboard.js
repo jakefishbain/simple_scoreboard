@@ -45,7 +45,7 @@ class Scoreboard extends Component {
         <div className='container'>
           <button
             onClick={() => this.props.onDelete(this.props.id)}
-            className='deleteBtn'>X
+            className='deleteBtn'>❌
           </button>
           <input placeholder='Name' className='player' id={this.props.id + 'player'}/>
           <h2>{nf.format(this.props.score)}</h2>
@@ -55,7 +55,7 @@ class Scoreboard extends Component {
             onAddScore={this.addScore.bind(this)}
             onDisplayScore={this.displayScore.bind(this)}
           />
-          <ul key={this.props.id + 'oldScores'}>
+          <ul className='oldList' key={this.props.id + 'oldScores'}>
             {this.props.previousScores.map(oldScore => (
               <li
                 key={uuid.v4()}
