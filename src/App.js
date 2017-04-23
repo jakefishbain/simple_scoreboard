@@ -79,6 +79,10 @@ class App extends Component {
     this.setState({boards: removeBoard(id, this.state.boards)})
   }
 
+  handleDeleteAll(){
+    this.setState({boards: []})
+  }
+
   handleResetBoard(id){
     this.setState({boards: resetBoard(id, this.state.boards)})
   }
@@ -96,6 +100,8 @@ class App extends Component {
           <h2>Simple Scoreboard</h2>
         </div>
           <button className='addBoardBtn' onClick={this.handleAddBoard.bind(this)}>Add a Board</button>
+          <button className='deleteAllBtn' onClick={this.handleDeleteAll.bind(this)}>Delete All</button>
+          <button className='resetAllBtn' onClick={this.handleAddBoard.bind(this)}>Reset All</button>
           <ul>
             {
               this.state.boards.map( board =>(
