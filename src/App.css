@@ -50,3 +50,7 @@ input {
 .resetBtn {
   margin: 5px;
 }
+
+.undo0 {
+  display: none;
+}

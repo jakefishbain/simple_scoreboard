@@ -6,7 +6,7 @@ var uuid = require('node-uuid');
 const addScore = (id, score, boards) => {
   function attachScore(board){
     if(board.id === id){
-      board.score = +board.score + +score
+      board.score += +score
     }
     return board
   }
@@ -45,6 +45,17 @@ const resetBoard = (id, boards) => {
   return boards.map(resetScore)
 }
 
+const undoLast = (id, boards) => {
+  function undo(board){
+    if(board.id === id){
+      board.score -= +board.previousScores[0]
+      board.previousScores.shift()
+    }
+    return board
+  }
+  return boards.map(undo)
+}
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -71,6 +82,10 @@ class App extends Component {
     this.setState({boards: resetBoard(id, this.state.boards)})
   }
 
+  handleUndo(id){
+    this.setState({boards: undoLast(id, this.state.boards)})
+  }
+
   render() {
     return (
       <div className="App">
@@ -91,6 +106,7 @@ class App extends Component {
                   onGetDisplayScore={this.handleDisplayScore.bind(this)}
                   onDelete={this.handleDeleteBoard.bind(this)}
                   onReset={this.handleResetBoard.bind(this)}
+                  onUndo={this.handleUndo.bind(this)}
                 />
               ))
             }
