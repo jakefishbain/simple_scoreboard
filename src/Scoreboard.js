@@ -13,10 +13,10 @@ class Scoreboard extends Component {
   render(){
     return(
       <div className='container'>
-      <button
-        onClick={() => this.props.onDelete(this.props.id)}
-        className='deleteBtn'>X
-      </button>
+        <button
+          onClick={() => this.props.onDelete(this.props.id)}
+          className='deleteBtn'>X
+        </button>
         <input className='player'/>
         <h2>{this.props.score}</h2>
         <ScoreForm
@@ -25,6 +25,9 @@ class Scoreboard extends Component {
           onAddScore={this.addScore.bind(this)}
           onDisplayScore={this.displayScore.bind(this)}
         />
+        <button
+          onClick={() => this.props.onReset(this.props.id)}>Reset
+        </button>
       </div>
     )
   }
