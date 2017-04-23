@@ -42,7 +42,7 @@
 
 
 input {
-  width: 100%;
+  width: 75%;
   font-size: 10px;
 }
 
@@ -66,4 +66,12 @@ input {
 
 .undo0 {
   display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .container{
+        width: 50%;
+        margin-left: -25px;
+    }
 }

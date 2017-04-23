@@ -40,9 +40,9 @@ class Scoreboard extends Component {
 
   render(){
     return(
-      <div>
+      <div className='container'>
       <Interactive draggable draggableOptions={draggableOptions}>
-        <div className='container'>
+        <div>
           <button
             onClick={() => this.props.onDelete(this.props.id)}
             className='deleteBtn'>❌
