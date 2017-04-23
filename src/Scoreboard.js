@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import ScoreForm from './ScoreForm'
 var uuid = require('node-uuid');
+var nf = new Intl.NumberFormat();
 
 class Scoreboard extends Component {
   addScore(newScore){
     if(!isNaN(+newScore)){
       this.props.onGetAddScore(this.props.id, newScore)
+    }else{
+      alert(newScore + ' is not a number')
     }
   }
 
@@ -23,7 +26,7 @@ class Scoreboard extends Component {
           className='deleteBtn'>X
         </button>
         <input className='player' id={this.props.id + 'player'}/>
-        <h2>{this.props.score}</h2>
+        <h2>{nf.format(this.props.score)}</h2>
         <ScoreForm
           key={this.props.id}
           id={this.props.id}
@@ -34,11 +37,12 @@ class Scoreboard extends Component {
           {this.props.previousScores.map(oldScore => (
             <li
               key={uuid.v4()}
-              className='oldScores'>{oldScore}
+              className='oldScores'>{nf.format(oldScore)}
             </li>
           ))}
         </ul>
         <button
+          className='resetBtn'
           onClick={() => this.props.onReset(this.props.id)}>Reset
         </button>
       </div>

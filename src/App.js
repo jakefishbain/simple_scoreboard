@@ -32,9 +32,11 @@ const removeBoard = (id, boards) => {
 
 const resetBoard = (id, boards) => {
   function resetScore(board){
+  const player = document.getElementById(`${board.id}player`)
+  const score = document.getElementById(`${board.id}newScore`)
     if(board.id === id){
-      const player = document.getElementById(`${board.id}player`)
       player.value = ''
+      score.value = ''
       board.score = 0
       board.previousScores = []
     }

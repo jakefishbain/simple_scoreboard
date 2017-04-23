@@ -44,4 +44,9 @@ input {
 .oldScores {
   margin-right: 50px;
   list-style-type: none;
+  text-align: center;
+}
+
+.resetBtn {
+  margin: 5px;
 }
