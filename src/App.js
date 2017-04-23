@@ -13,6 +13,16 @@ const addScore = (id, score, boards) => {
   return boards.map(attachScore)
 }
 
+const addDisplayScore = (id, oldScore, boards) => {
+  function attachDisplay(board){
+    if(board.id === id){
+      board.previousScore = board.previousScores.unshift(oldScore)
+    }
+    return board
+  }
+  return boards.map(attachDisplay)
+}
+
 const removeBoard = (id, boards) => {
   function removeIt(board) {
     return board.id !== id
@@ -23,7 +33,10 @@ const removeBoard = (id, boards) => {
 const resetBoard = (id, boards) => {
   function resetScore(board){
     if(board.id === id){
+      const player = document.getElementById(`${board.id}player`)
+      player.value = ''
       board.score = 0
+      board.previousScores = []
     }
     return board
   }
@@ -35,17 +48,21 @@ class App extends Component {
     super(props);
     this.state = {
       boards: [
-        { id: 0, score: 0 },
+        { id: 0, score: 0, previousScores: []},
       ]
     }
   }
 
   handleAddBoard(props){
-    this.setState({boards: this.state.boards.concat({id: uuid.v4(), score: 0})})
+    this.setState({boards: this.state.boards.concat({id: uuid.v4(), score: 0, previousScores: []})})
   }
 
   handleAddScore(id, score){
     this.setState({boards: addScore(id, score, this.state.boards)})
+  }
+
+  handleDisplayScore(id, oldScore){
+    this.setState({boards: addDisplayScore(id, oldScore, this.state.boards)})
   }
 
   handleDeleteBoard(id){
@@ -70,8 +87,10 @@ class App extends Component {
                 <Scoreboard
                   key={board.id}
                   score={board.score}
+                  previousScores={board.previousScores}
                   id={board.id}
                   onGetAddScore={this.handleAddScore.bind(this)}
+                  onGetDisplayScore={this.handleDisplayScore.bind(this)}
                   onDelete={this.handleDeleteBoard.bind(this)}
                   onReset={this.handleResetBoard.bind(this)}
                 />
