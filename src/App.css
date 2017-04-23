@@ -53,19 +53,12 @@ input {
 
 .icon {
   font-size: 20px;
-  border:none;
+  border: none;
   background: none;
 }
 
 .scoreSubmit {
   visibility: hidden;
-}
-
-.credits {
-  font-size: 6px;
-  position: absolute;
-  bottom: 0px;
-  left: 42%;
 }
 
 .resetBtn {
@@ -74,6 +67,16 @@ input {
 
 .undo0 {
   display: none;
+}
+
+.credits {
+  color: grey;
+  font-size: 4px;
+}
+
+.credits a {
+  color: grey;
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 768px) {
