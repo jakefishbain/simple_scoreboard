@@ -5,9 +5,8 @@ class ScoreForm extends Component{
     e.preventDefault()
     const form = document.getElementById(`${this.props.id}form`)
     const newScore = document.getElementById(`${this.props.id}newScore`).value
-    console.log(form)
     this.props.onAddScore(newScore)
-    // this.props.onDisplayScore(newScore)
+    this.props.onDisplayScore(newScore)
     form.reset()
   }
 
