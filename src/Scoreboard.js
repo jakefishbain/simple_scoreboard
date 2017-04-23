@@ -40,9 +40,9 @@ class Scoreboard extends Component {
 
   render(){
     return(
-      <div className='container'>
+      <div>
       <Interactive draggable draggableOptions={draggableOptions}>
-        <div>
+			<div className='scoreContainer container'>
           <button
             onClick={() => this.props.onDelete(this.props.id)}
             className='deleteBtn'>❌
@@ -56,22 +56,23 @@ class Scoreboard extends Component {
             onDisplayScore={this.displayScore.bind(this)}
           />
           <ul className='oldList' key={this.props.id + 'oldScores'}>
-            {this.props.previousScores.map(oldScore => (
+            {this.props.previousScores.map((oldScore, i) => (
               <li
                 key={uuid.v4()}
+								onClick={() => this.props.onUndo(this.props.id, i)}
                 className='oldScores'>{nf.format(oldScore)}
               </li>
             ))}
           </ul>
           <button
             className={'icon undo' + this.props.previousScores.length}
-            onClick={() => this.props.onUndo(this.props.id)}>🔙
+            onClick={() => this.props.onUndo(this.props.id, 0)}>🔙
           </button>
           <button
             className='icon resetBtn'
             onClick={() => this.props.onReset(this.props.id)}>🗑
           </button>
-          </div>
+					</div>
         </Interactive>
       </div>
     )

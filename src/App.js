@@ -45,11 +45,12 @@ const resetBoard = (id, boards) => {
   return boards.map(resetScore)
 }
 
-const undoLast = (id, boards) => {
+const undoScore = (id, scoreIndex, boards) => {
   function undo(board){
-    if(board.id === id){
-      board.score -= +board.previousScores[0]
-      board.previousScores.shift()
+    console.log(board.previousScores[scoreIndex]);
+    if(board.id === id && board.previousScores.length > 1){
+      board.score -= +board.previousScores[scoreIndex]
+      board.previousScores.splice(scoreIndex, 1)
     }
     return board
   }
@@ -82,8 +83,9 @@ class App extends Component {
     this.setState({boards: resetBoard(id, this.state.boards)})
   }
 
-  handleUndo(id){
-    this.setState({boards: undoLast(id, this.state.boards)})
+  handleUndo(boardId, scoreIndex){
+    console.log(boardId, scoreIndex)
+    this.setState({boards: undoScore(boardId, scoreIndex, this.state.boards)})
   }
 
   render() {
