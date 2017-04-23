@@ -46,11 +46,7 @@ const resetBoard = (id, boards) => {
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      boards: [
-        { id: 0, score: 0, previousScores: []},
-      ]
-    }
+    this.state = { boards: [] }
   }
 
   handleAddBoard(props){
