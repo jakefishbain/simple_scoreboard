@@ -6,7 +6,9 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "interactjs": "^1.2.8",
     "node-uuid": "^1.4.8",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },

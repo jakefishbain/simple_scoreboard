@@ -11,10 +11,11 @@
 
 .container {
   position: relative;
-  width: 10%;
-  padding: 10%;
+  width: 6%;
+  padding: 4%;
   margin: 1%;
   border: 2px solid black;
+  border-radius: 5px;
   display: inline-block;
 }
 
@@ -31,6 +32,12 @@
 
 input {
   width: 100%;
+}
+
+.icon {
+  font-size: 20px;
+  border:none;
+  background: none;
 }
 
 .scoreSubmit {
