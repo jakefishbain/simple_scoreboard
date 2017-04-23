@@ -4,11 +4,15 @@ var uuid = require('node-uuid');
 
 class Scoreboard extends Component {
   addScore(newScore){
-    this.props.onGetAddScore(this.props.id, newScore)
+    if(!isNaN(+newScore)){
+      this.props.onGetAddScore(this.props.id, newScore)
+    }
   }
 
   displayScore(oldScore){
-    this.props.onGetDisplayScore(this.props.id, oldScore)
+    if(!isNaN(+oldScore)){
+      this.props.onGetDisplayScore(this.props.id, oldScore)
+    }
   }
 
   render(){
