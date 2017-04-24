@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Scoreboard from './Scoreboard';
+import { Helmet } from 'react-helmet'
 import './App.css';
 var uuid = require('node-uuid');
 
@@ -112,7 +113,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+      <Helmet>
+        <title>Simple Scoreboard</title>
+      </Helmet>
         <div className="AppHeader">
           <div className='credits'>Icons made by <a href="http://www.flaticon.com/authors/vignesh-oviyan" title="Vignesh Oviyan">Vignesh Oviyan</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
           <h2>Simple Scoreboard</h2>
