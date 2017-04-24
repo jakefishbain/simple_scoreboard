@@ -51,7 +51,7 @@ const resetAll = (boards) => {
   const player = document.getElementById(`${board.id}player`)
   const score = document.getElementById(`${board.id}newScore`)
     player.value = ''
-    score.vaule = ''
+    score.value = ''
     board.score = 0
     board.previousScores = []
     return board
