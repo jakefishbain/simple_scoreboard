@@ -62,7 +62,7 @@ const resetAll = (boards) => {
 const undoScore = (id, scoreIndex, boards) => {
   function undo(board){
     console.log(board.previousScores[scoreIndex]);
-    if(board.id === id && board.previousScores.length > 1){
+    if(board.id === id && board.previousScores.length > 0){
       board.score -= +board.previousScores[scoreIndex]
       board.previousScores.splice(scoreIndex, 1)
     }
